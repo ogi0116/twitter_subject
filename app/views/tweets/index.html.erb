@@ -1,0 +1,14 @@
+
+<table class="table table-user">
+  <% @tweets.each do |tweet| %>
+
+    <div>
+      <%= image_tag tweet.get_image, size: '500x500' %>
+      <p><%= image_tag 'sample-author1.jpg', size: '100x100' %></p>
+      <%= link_to tweet.caption, tweet_path(tweet) %>
+      <p><%= tweet.user.name %></p>
+    </div>
+  <% end %>
+
+
+
