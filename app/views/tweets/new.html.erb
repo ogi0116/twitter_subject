@@ -1,8 +1,2 @@
-<h1>ツイートフォーム</h1>
-<%= form_with model: @tweet do |f| %>
-  <h4>image</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <h4>caption</h4>
-  <%= f.text_area :caption %>
-  <%= f.submit 'Tweetする' %>
-<% end %>
+<h1>楽しかった出来事を投稿しよう！</h1>
+<%= render 'tweet', tweet: @tweet %>

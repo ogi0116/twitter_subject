@@ -2,6 +2,12 @@ class Tweet < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+
+  validates :caption,presence:true,length:{maximum:200}
+
+
 
   def get_image
     unless image.attached?
@@ -9,6 +15,10 @@ class Tweet < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 

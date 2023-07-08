@@ -1,10 +1,42 @@
-<div>
-  <%= image_tag @tweet.get_image, size:'500x500' %>
-  <p>caption<%= @tweet.caption %></p>
-  <p>User image：<%= image_tag 'sample-author1.jpg', size:'100x100' %></p>
-  <p>User name：<%= @tweet.user.name %></p>
-  <p>投稿日：<%= @tweet.created_at.strftime('%Y/%m/%d') %></p>
-    <% if @tweet.user == current_user %>
-    <%= link_to "削除", tweet_path(@tweet), method: :delete %>
-  <% end %>
+<div class='container px-5 my-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3 '>
+      <h2>User infomation</h2>
+      <%= render 'users/info', user: @user %>
+      <h2>Tweet form</h2>
+      <%= render 'tweet', tweet: @new_tweet %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <table class="table table-user">
+       <tr>
+         <td><%= image_tag @tweet.get_image, size:'400x400' %></td>
+       </tr>
+
+      <tr>
+        <td>
+          <%= image_tag @tweet.user.get_profile_image(100,100) %>
+          <%= @tweet.user.name %>
+          <%= @tweet.created_at.strftime('%Y/%m/%d') %>
+          コメント件数：<%= @tweet.post_comments.count %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= @tweet.caption %>
+         <% if @tweet.user == current_user %>
+          <%= link_to "tweetを削除", tweet_path(@tweet), method: :delete %>
+        <% end %>
+        </td>
+        <td><%= render 'tweets/favorites', tweet: @tweet %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= render 'tweets/postcomment', tweet:@tweet, post_comment:@post_comment %>
+        </td>
+      </tr>
+     </table>
+   </div>
+  </div>
 </div>
+
+

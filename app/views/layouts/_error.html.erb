@@ -1,0 +1,8 @@
+<% if tweet.errors.any? %>
+  <%= tweet.errors.count %>件のエラーが発生しました
+  <ul>
+    <% tweet.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

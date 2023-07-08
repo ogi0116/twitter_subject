@@ -1,16 +1,15 @@
+
 <div class='container px-5 my-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3 '>
       <h2>User infomation</h2>
-      <%= render 'users/info', user: current_user %>
-      
+      <%= render 'users/info', user: @user %>
       <h2>Tweet form</h2>
-      <%= render 'tweet', tweet: @tweet %>
+      <%= render 'tweets/tweet', tweet: @tweet %>
     </div>
     <div class='col-md-8 offset-md-1'>
-     <%= render 'layouts/error', tweet: @tweet %>
-     <%= render 'tweets', tweets: @tweets %>
+      <h2>いいね一覧</h2>
+     <%= render 'tweets/tweets', tweets: @favorite_tweets %>
     </div>
   </div>
 </div>
-

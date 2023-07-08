@@ -1,0 +1,51 @@
+<table class='table'>
+  <tr><%= image_tag user.get_profile_image(100,100) %></tr>
+  <tr>
+	  <th>name</th>
+	  <th><%= user.name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+    <th>address</th>
+    <th><%= user.address %></th>
+  </tr>
+  <tr>
+    <th>birthday</th>
+    <th><%= user.birthday %></th>
+  </tr>
+   <tr>
+  <th>follow
+    <%= link_to follows_user_path(user) do %>
+      <%= "#{user.active_relationships.count}" %>
+    <% end %>
+  </th>
+  <th>follower
+    <%= link_to followers_user_path(user) do %>
+     <%= "#{user.passive_relationships.count}" %>
+    <% end %>
+  </th>
+ </tr>
+  <tr>
+    <th>
+       <% if current_user != user %>
+          <% if user.followed_by?(current_user) %>
+              <p><%=link_to "unfollow", user_relationships_path(user.id), method: :delete, class: 'btn btn-danger' %></p>
+          <% else %>
+              <p><%=link_to "follow", user_relationships_path(user.id), method: :post, class: 'btn btn-success' %></p>
+          <% end %>
+      <% end %>
+    </th>
+   <th><%=link_to"favorite list",favorites_user_path(user), class: 'btn btn-primary' %></th>
+
+  </tr>
+
+</table>
+
+<div class='row'>
+  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>
