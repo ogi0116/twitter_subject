@@ -3,9 +3,12 @@
     <div class='col-md-3 '>
       <h2>User infomation</h2>
       <%= render 'users/info', user: current_user %>
-      
+
       <h2>Tweet form</h2>
       <%= render 'tweet', tweet: @tweet %>
+
+
+
     </div>
     <div class='col-md-8 offset-md-1'>
      <%= render 'layouts/error', tweet: @tweet %>

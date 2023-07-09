@@ -29,19 +29,19 @@
             <% if user_signed_in? %>
              <li>
               <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-user"></i> プロフィール
+                <i class="fa-solid fa-user"></i> My Profile
               <% end %>
              </li>
 
              <li>
               <%= link_to new_tweet_path,class: 'nav-link text-light' do %>
-                <i class="fa-brands fa-twitter"></i> ツイート
+                <i class="fa-brands fa-twitter"></i> Tweet
               <% end %>
              </li>
 
              <li>
               <%= link_to tweets_path,class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-house"></i> ホーム
+                <i class="fa-solid fa-house"></i> Home
               <% end %>
              </li>
 
@@ -80,7 +80,7 @@
 
 
     <%= yield %>
-    
+
 
     <footer>
   <div class='container mt-5'>
@@ -91,8 +91,8 @@
     </div>
   </div>
 </footer>
-    
-    
-    
+
+
+
   </body>
 </html>

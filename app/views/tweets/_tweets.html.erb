@@ -17,9 +17,9 @@
       <td>
         <% if current_user != tweet.user %>
           <% if tweet.user.followed_by?(current_user) %>
-              <%=link_to "フォロー済み", user_relationships_path(tweet.user.id), method: :delete %>
+              <%=link_to "unfollow", user_relationships_path(tweet.user.id), method: :delete, class: 'btn btn-danger' %>
           <% else %>
-              <%=link_to "フォローする", user_relationships_path(tweet.user.id), method: :post %>
+              <%=link_to "follow", user_relationships_path(tweet.user.id), method: :post, class: 'btn btn-success' %>
           <% end %>
          <% end %>
       </td>

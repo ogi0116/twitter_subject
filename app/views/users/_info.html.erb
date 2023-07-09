@@ -1,5 +1,12 @@
 <table class='table'>
-  <tr><%= image_tag user.get_profile_image(100,100) %></tr>
+  <tr>
+  <th><%= image_tag user.get_profile_image(100,100) %></th>
+  <th>
+    <% if current_user != user && current_user.followed_by?(user) && user.followed_by?(current_user) %>
+      <%= link_to 'DM', chat_path(user.id), class: "ml-3, btn btn-info" %>
+    <% end %>
+  </th>
+  </tr>
   <tr>
 	  <th>name</th>
 	  <th><%= user.name %></th>

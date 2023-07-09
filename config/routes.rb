@@ -21,6 +21,12 @@ Rails.application.routes.draw do
      get :followers, on: :member
    end
 
+   resources :chats, only: [:show, :create]
+   
+   resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+     resource :group_users, only: [:create, :destroy]
+   end
+
 
   get 'homes/top'
   get 'homes/about' => 'homes#about', as: 'about'

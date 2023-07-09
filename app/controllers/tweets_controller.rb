@@ -29,6 +29,10 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all
     @user = current_user
     @tweet = Tweet.new
+  to  = Time.current.at_end_of_day
+  from  = (to - 6.day).at_beginning_of_day
+  @tweets = Tweet.includes(:favorites).sort_by {|x| x.favorites.where(created_at: from...to).size}.reverse
+
   end
 
   def destroy

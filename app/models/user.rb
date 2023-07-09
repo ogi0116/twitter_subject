@@ -7,6 +7,12 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
+
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
 
 
 
